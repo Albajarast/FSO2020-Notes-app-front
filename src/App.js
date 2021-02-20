@@ -36,7 +36,7 @@ const App = (props) => {
     const changedNote = { ...note, important: !note.important }
 
     noteService
-      .update(changedNote)
+      .update(id, changedNote)
       .then((returnedNote) => {
         setNotes(notes.map((note) => (note.id !== id ? note : returnedNote)))
       })
@@ -47,7 +47,7 @@ const App = (props) => {
         setTimeout(() => {
           setErrorMessage(null)
         }, 5000)
-        setNotes(notes.filter((n) => n.id !== id))
+        // setNotes(notes.filter((n) => n.id !== id))
       })
   }
 
@@ -66,7 +66,6 @@ const App = (props) => {
   }
 
   const handleNoteChange = (event) => {
-    console.log(event.target.value)
     setNewNote(event.target.value)
   }
 
